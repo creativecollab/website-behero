@@ -1,13 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import "./styles.css";
 
 import logo from "./../../assets/logo.svg";
 
+import api from "./../../Services/Api";
+
 function Case() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [value, setValue] = useState("");
+
+  const ongId = localStorage.getItem("ongId");
+
+  const history = useHistory();
+
+  async function createCase(e) {
+    e.preventDefault();
+    const data = {
+      title,
+      description,
+      value
+    };
+
+    try {
+      await api.post("/incidents", data, {
+        headers: {
+          Authorization: ongId
+        }
+      });
+
+      history.push("/app");
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   return (
     <div className="case-container">
       <div className="case-wrapper">
@@ -27,22 +58,26 @@ function Case() {
           </Link>
         </section>
 
-        <form action="" className="case-form">
+        <form onSubmit={createCase} className="case-form">
           <label htmlFor="title">
             <input
               placeholder="Titulo do caso"
               type="text"
               name="title"
               id="title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
             />
           </label>
 
           <label htmlFor="description">
             <textarea
               placeholder="Seu email"
-              type="email"
-              name="email"
-              id="email"
+              type="text"
+              name="description"
+              id="description"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
             ></textarea>
           </label>
 
@@ -52,6 +87,8 @@ function Case() {
               type="text"
               name="value"
               id="value"
+              value={value}
+              onChange={e => setValue(e.target.value)}
             />
           </label>
 

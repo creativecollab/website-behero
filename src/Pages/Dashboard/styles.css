@@ -25,6 +25,10 @@
   height: 60px;
 }
 
+.dash-container .dash-header .buttons {
+  margin-left: auto;
+}
+
 .dash-container .dash-header button {
   height: 60px;
   width: 60px;
@@ -49,6 +53,40 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   list-style: none;
+}
+
+@media screen and (max-width: 734px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dash-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .dash-header .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+  }
+
+  .dash-header .buttons .btn {
+    width: 100%;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card .card-item {
+    margin-bottom: 20px;
+  }
 }
 
 .card .card-item {

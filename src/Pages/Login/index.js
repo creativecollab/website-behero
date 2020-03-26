@@ -1,24 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
-
-import "./styles.css";
+import api from "./../../Services/Api";
 
 import heroImage from "./../../assets/heroes.png";
 import logo from "./../../assets/logo.svg";
 
+import "./styles.css";
+
 function Login() {
+  const [id, setId] = useState("");
+  const history = useHistory();
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    try {
+      const response = await api.post("/login", { id });
+
+      console.log(response.data.name);
+
+      localStorage.setItem("ongName", response.data.name);
+      localStorage.setItem("ongId", id);
+
+      history.push("/app");
+    } catch (error) {
+      console.log(error);
+      alert("Error");
+    }
+  }
+
   return (
     <div className="login-container">
       <section className="login-wrapper">
         <img src={logo} alt="BeHero" />
 
-        <form className="login-form ">
+        <form onSubmit={handleLogin} className="login-form ">
           <h1>Faça login</h1>
 
-          <input type="text" placeholder="Sua ID" />
+          <input
+            type="text"
+            placeholder="Sua ID"
+            required
+            name="id"
+            value={id}
+            onChange={e => setId(e.target.value)}
+          />
 
-          <button className="btn">Entrar</button>
+          <button type="submit" className="btn">
+            Entrar
+          </button>
         </form>
 
         <Link className="link" to="/registrar">
