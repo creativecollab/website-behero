@@ -1,0 +1,90 @@
+.dash-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 32px;
+  margin: 32px auto;
+}
+
+.dash-container .dash-header {
+  display: flex;
+  align-items: center;
+}
+
+.dash-container .dash-header span {
+  font-size: 20px;
+  margin-left: 24px;
+}
+
+.dash-container .dash-header a {
+  width: 200px;
+  margin-top: 0;
+  margin-left: auto;
+}
+
+.dash-container .dash-header img {
+  height: 60px;
+}
+
+.dash-container .dash-header button {
+  height: 60px;
+  width: 60px;
+  background-color: transparent;
+  border: 2px solid #dcdce6;
+  margin-left: 16px;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.dash-container .dash-header button:hover {
+  border-color: #e02041;
+}
+
+.dash-wrapper h1 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+}
+
+.card .card-item {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.card .card-item button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: 0;
+  transition: opacity 0.2s;
+}
+
+.card .card-item button:hover {
+  opacity: 0.8;
+}
+
+.card .card-item strong {
+  margin-bottom: 20px;
+  display: block;
+  color: #41414d;
+}
+
+.card .card-item p {
+  font-size: 16px;
+  color: #737380;
+  line-height: 20px;
+}
+
+.card .card-item p + strong {
+  margin-top: 30px;
+}

@@ -45,11 +45,16 @@ function Register() {
           </label>
 
           <label htmlFor="whatsapp">
-            <input type="text" name="whatsapp" id="whatsapp" />
+            <input
+              placeholder="Seu WhastApp"
+              type="text"
+              name="whatsapp"
+              id="whatsapp"
+            />
           </label>
 
           <div className="input-group">
-            <input type="text" name="city" id="city" />
+            <input placeholder="Cidade" type="text" name="city" id="city" />
 
             <input
               style={{ width: 80 }}
@@ -57,6 +62,7 @@ function Register() {
               name="uf"
               id="uf"
               className="uf"
+              placeholder="UF"
             />
           </div>
 
